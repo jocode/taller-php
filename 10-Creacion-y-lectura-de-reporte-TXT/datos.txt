@@ -1,0 +1,10 @@
+México_0 ; Chile_0 ; Colombia_0 ; Venezuela_0 ; Bolivia_0
+México_1 ; Chile_1 ; Colombia_1 ; Venezuela_1 ; Bolivia_1
+México_2 ; Chile_2 ; Colombia_2 ; Venezuela_2 ; Bolivia_2
+México_3 ; Chile_3 ; Colombia_3 ; Venezuela_3 ; Bolivia_3
+México_4 ; Chile_4 ; Colombia_4 ; Venezuela_4 ; Bolivia_4
+México_5 ; Chile_5 ; Colombia_5 ; Venezuela_5 ; Bolivia_5
+México_6 ; Chile_6 ; Colombia_6 ; Venezuela_6 ; Bolivia_6
+México_7 ; Chile_7 ; Colombia_7 ; Venezuela_7 ; Bolivia_7
+México_8 ; Chile_8 ; Colombia_8 ; Venezuela_8 ; Bolivia_8
+México_9 ; Chile_9 ; Colombia_9 ; Venezuela_9 ; Bolivia_9
