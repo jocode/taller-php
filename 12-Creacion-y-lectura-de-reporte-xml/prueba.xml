@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<usuarios>
+	<personas>
+		<id_persona>1</id_persona>
+		<nom>Juan Ñandú</nom>
+		<correo>correo@correo.com</correo>
+	</personas>
+	<personas>
+		<id_persona>2</id_persona>
+		<nom>Maria Cansona</nom>
+		<correo>correo@cansona.com</correo>
+	</personas>
+	<personas>
+		<id_persona>3</id_persona>
+		<nom>Hola Mundo</nom>
+		<correo>correo@mundo.com</correo>
+	</personas>
+</usuarios>
