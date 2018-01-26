@@ -5,11 +5,11 @@ require_once 'db.php';
 require_once 'paginador.php';
 
 $paginador = new Paginador();
-$pagina = $_GET['pagina'];
+$pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 $sql = "SELECT * FROM paises";
 $datos = $paginador->paginar($sql, $pagina, 20);
 
-$params = $paginador->getPaginacion();
+$params = $paginador->getRangoPaginacion();
 
 ?>
 <!-- <pre>
@@ -59,11 +59,11 @@ $params = $paginador->getPaginacion();
 		</li>
 		<!-- Mostrar el Listado de páginas -->
 		<li style="display: inline; margin-right: 5px;">
-			<?php for($i = 1; $i <= $params['total']; $i++): ?>
-				<?php if ($params['actual'] != $i): ?>
-				<a href="?pagina=<?php echo $i; ?>"><?php echo $i; ?></a>
+			<?php for($i = 0; $i < count($params['rango']); $i++): ?>
+				<?php if ($params['actual'] != $params['rango'][$i]): ?>
+				<a href="?pagina=<?php echo $params['rango'][$i]; ?>"><?php echo $params['rango'][$i]; ?></a>
 			<?php else: ?>
-				<?php echo $i; ?>
+				<?php echo $params['rango'][$i]; ?>
 			<?php endif; ?>
 			<?php endfor; ?>
 		</li>

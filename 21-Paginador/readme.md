@@ -88,3 +88,64 @@ $datos = $paginador->paginar($sql, $pagina, 20);
 $params = $paginador->getPaginacion();
 ```
 
+# Crear Rango de Paginación
+
+Los rangos de paginación nos permite mostrar sólo un listado de páginas. 
+
+Para eso, se ha creado el método `getRangoPaginacion($limite)`, en el archivo [paginador.php](paginador.php), donde le pasamos por parámetro la cantidad de páginas que queremos mostrar.
+
+Hay que tener en cuenta lo siguiente, para crear el rango.
+- Debemos tomar lado derecho y lado izquierdo de acuerdo a la página actual, para eso hacemos una división de la cantidad entre 2
+```php 
+$rango = ceil($limite / 2);
+```
+- Determinamos el rango del lado derecho que es **total_paginas - pagina_seleccionada**
+```php 
+$rango_derecho = $total_paginas - $pagina_seleccionada;
+
+if ($rango_derecho < $rango){
+	# Por ejemplo resto = 3 - 2 => 1
+	$resto = $rango - $rango_derecho;
+} else {
+	$resto = 0;
+}
+```
+- Determinamos el rango izquierdo **(pagina_seleccionada - (rango + resto) )**  <== |actual|
+```php 
+$rango_izquierdo = $pagina_seleccionada - ($rango + $resto);
+
+for ($i = $pagina_seleccionada; $i > $rango_izquierdo; $i--){
+	if ($i == 0){
+		break;
+	}
+	# Almacenamos las páginas del rango izquierdo
+	$paginas[] = $i;
+}
+
+# Ordenamos los valores del array de menor a mayor
+sort($paginas);
+```
+- Luego determinamos las páginas del rango derecho |actual| ==>
+```php 
+if ($pagina_seleccionada < $rango){
+	$rango_derecho = $limite;
+} else {
+	# Esta suma puede dar un número mayor al total de páginas
+	$rango_derecho = $pagina_seleccionada + $rango;
+}
+
+for ($i = $pagina_seleccionada + 1; $i <= $rango_derecho; $i++){
+	# Si i, es mayor al total de las páginas, salga del ciclo
+	if ($i > $total_paginas){
+		break;
+	}
+
+	# Almacenamos las páginas del rango derecho
+	$paginas[] = $i;
+}
+```
+- Finalmente guardamos las páginas en el array asociativo `_paginacion` como 'rango'
+```php 
+$this->_paginacion['rango'] = $paginas;
+```
+
